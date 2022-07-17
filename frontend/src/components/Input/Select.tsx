@@ -1,5 +1,5 @@
 import React, { ChangeEventHandler } from 'react';
-import { classNames } from '../../helpers/jsx'
+import { classNames } from '../../utils/jsx'
 
 import styles from './Select.module.css'
 
@@ -13,15 +13,19 @@ export type SelectOption<T extends SelectValueLimit> = {
 type Props<T extends SelectValueLimit> = {
   value?: T
   placeholder?: string
+  name?: string
+  label?: string
   options: SelectOption<T>[]
   onChange?: ChangeEventHandler<HTMLSelectElement>
 }
 
-const Select = <T extends SelectValueLimit>({ value, placeholder, onChange, options }: Props<T>) => {
+const Select = <T extends SelectValueLimit>({ value, placeholder, onChange, options, name, label }: Props<T>) => {
   return (
-    <div>
+    <label>
+      { label && <div>{ label }</div>}
       <select 
         className={classNames(['border rounded p-2 leading-6', styles.select])}
+        name={name}
         placeholder={placeholder}
         value={value}
         onChange={onChange}
@@ -31,7 +35,7 @@ const Select = <T extends SelectValueLimit>({ value, placeholder, onChange, opti
         <option key={String(value)} value={value}>{label}</option>
       ))}
       </select>
-    </div>
+    </label>
   )
 }
 

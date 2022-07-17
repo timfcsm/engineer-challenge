@@ -1,7 +1,7 @@
 import React, { PropsWithChildren } from 'react';
 import TableHead from './TableHead'
 
-type TableColumn<T> = {
+export type TableColumn<T> = {
   title?: React.ReactNode
   key: React.Key
   dataIndex?: keyof T
@@ -18,7 +18,7 @@ type TableProps<T> = {
 const Table: <T>(props: PropsWithChildren<TableProps<T>>) => React.ReactElement = ({
   columns,
   data,
-  rowKey
+  rowKey,
 }) => (
   <div className="flex flex-col">
     <div className="overflow-x-auto sm:-mx-6 lg:-mx-8">
