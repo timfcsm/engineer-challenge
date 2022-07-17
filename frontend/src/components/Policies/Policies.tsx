@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useAppDispatch, useAppSelector } from '../../utils/hooks'
 import { fetchPolicies } from '../../store/reducers/policies-async-actions'
-import { selectPolicieFilters, selectPoliciesByFilters, selectProviders } from '../../store/reducers/policies-selectors'
+import { selectPolicieFilters, selectPoliciesByFilters, selectProviders, selectTotalFiltered } from '../../store/reducers/policies-selectors'
 import Badge from '../Badge/Badge'
 import Header from '../Header/Header'
 import Pagination from '../Pagination/Pagination'
@@ -13,6 +13,7 @@ export const Policies: React.FC = () => {
   const [entryPerPage] = useState(10)
   const policies = useAppSelector(selectPoliciesByFilters)
   const filters = useAppSelector(selectPolicieFilters)
+  const total = useAppSelector(selectTotalFiltered)
   const providers = useAppSelector(selectProviders)
   const isLoading = useAppSelector(state => state.policies.isLoading)
   const dispatch = useAppDispatch()
@@ -99,7 +100,7 @@ export const Policies: React.FC = () => {
           <Pagination
             onPageChange={setPage}
             currentPage={page}
-            pages={Math.ceil(policies.length / entryPerPage)}
+            pages={Math.ceil(total / entryPerPage)}
           />
         </div>
       </div>

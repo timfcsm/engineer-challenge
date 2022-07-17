@@ -13,11 +13,13 @@ export type PoliciesState = {
   filters: PolicieFilters
   items: Policie[]
   isLoading: boolean
+  errors: string[]
 }
 
-const initialState: PoliciesState = {
+export const initialState: PoliciesState = {
   filters: {},
   items: [],
+  errors: [],
   isLoading: false,
 }
 
@@ -39,6 +41,10 @@ const policiesSlice = createSlice({
       })
       .addCase(fetchPolicies.fulfilled, (state, action) => {
         state.items = action.payload
+        state.isLoading = false
+      })
+      .addCase(fetchPolicies.rejected, (state) => {
+        state.errors.push('error while fetch policies')
         state.isLoading = false
       })
   },

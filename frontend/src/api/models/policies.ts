@@ -9,7 +9,7 @@ export type Policie = {
   customer: Customer
   insuranceType: InsuranceType
   provider: string
-  startDate: Date
-  endDate: Date
+  startDate: Date | null
+  endDate: Date | null
   status: PolicieStatus
 }

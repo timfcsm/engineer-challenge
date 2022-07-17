@@ -19,6 +19,8 @@ export const selectActivePolicies = createSelector(selectPolicies, policies => {
   return policies.filter(({ status }) => status !== 'CANCELLED' && status !== 'DROPPED_OUT')
 })
 
+export const selectTotalActive = createSelector(selectActivePolicies, policies => policies.length)
+
 export const selectPoliciesByFilters = createSelector(
   [selectPolicieFilters, selectActivePolicies],
   (filters, policies) => {
@@ -34,3 +36,5 @@ export const selectPoliciesByFilters = createSelector(
     }).map((entry, i) => ({ ...entry, index: i + 1 }))
   }
 )
+
+export const selectTotalFiltered = createSelector(selectPoliciesByFilters, policies => policies.length)

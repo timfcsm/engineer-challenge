@@ -97,8 +97,6 @@ describe('Policies', () => {
 
     fireEvent.click(screen.getByRole('button', { name: 'Clear filter' }))
 
-    screen.debug(screen.getByRole('table'))
-
     expect(queryAllByText('HOUSEHOLD').at(0)).toBeInTheDocument()
     expect(queryAllByText('HEALTH').at(0)).toBeInTheDocument()
     expect(queryAllByText(otherName).at(0)).toBeInTheDocument()

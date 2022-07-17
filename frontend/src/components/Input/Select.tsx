@@ -22,7 +22,7 @@ type Props<T extends SelectValueLimit> = {
 const Select = <T extends SelectValueLimit>({ value, placeholder, onChange, options, name, label }: Props<T>) => {
   return (
     <label>
-      { label && <div>{ label }</div>}
+      { label && <div className="text-base mb-2 font-light text-gray-900">{ label }</div>}
       <select 
         className={classNames(['border rounded p-2 leading-6', styles.select])}
         name={name}

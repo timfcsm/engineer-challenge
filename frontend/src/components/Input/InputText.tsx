@@ -13,8 +13,8 @@ type Props = {
 const InputText: React.FC<Props> = ({ value, type, placeholder, onChange, onInput, name, label }) => {
   return (
     <label>
-      { label && <div>{ label }</div>}
-      <input 
+      { label && <div className="text-base mb-2 font-light text-gray-900">{ label }</div>}
+      <input
         className="border rounded p-2 leading-6"
         placeholder={placeholder}
         type={type}

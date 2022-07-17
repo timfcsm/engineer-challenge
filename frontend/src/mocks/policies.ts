@@ -1,4 +1,6 @@
-export const policies = [
+import { Policie } from '../api/models/policies'
+
+export const policies: Policie[] = [
   {
     "id": "fb4aead9-bda2-4d16-8733-8d95e18c136a",
     "provider": "BARMER",
@@ -195,4 +197,4 @@ export const policies = [
       "dateOfBirth": "2005-06-10T22:51:36.000Z"
     }
   },
-]
+] as unknown as Policie[]
